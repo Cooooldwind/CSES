@@ -72,20 +72,21 @@
           "description": "该课程在课程表内的时间安排。",
           "type": "array",
           "items": {
-            "type": "object",
             "$ref": "#/definitions/class"
           },
           "examples": [
-            {
-              "subject": "数学",
-              "start_time": "08:00:00",
-              "end_time": "08:40:00"
-            },
-            {
-              "subject": "语文",
-              "start_time": "13:30:00",
-               "end_time": "14:10:00"
-            }
+            [
+              {
+                "subject": "数学",
+                "start_time": "08:00:00",
+                "end_time": "08:40:00"
+              },
+              {
+                "subject": "语文",
+                "start_time": "13:30:00",
+                "end_time": "14:10:00"
+              }
+            ]
           ]
         }
       },
@@ -98,13 +99,13 @@
 
     "subject": {
       "title": "课程",
-      "description": "CSES 课程",
+      "description": "一个课程对象，包含课程基本信息。",
       "type": "object",
       "properties": {
         "name": {
           "title": "名称",
           "type": "string",
-          "description": "课程的名称",
+          "description": "课程的名称。",
           "examples": [
             "数学",
             "语文"
@@ -122,7 +123,7 @@
         "location": {
           "title": "地点",
           "type": "string",
-          "description": "课程的地点",
+          "description": "课程的地点。",
           "examples": [
             "A101",
             "B202"
@@ -131,7 +132,7 @@
         "teacher": {
           "title": "教师",
           "type": "string",
-          "description": "课程的教师",
+          "description": "课程的教师。",
           "examples": [
             "张三",
             "李四"
@@ -231,6 +232,26 @@
           "$ref": "#/definitions/cycle"
         }
       },
+      "examples": [
+        {
+          "name": "2026年下学期",
+          "description": "2026年下学期的课程表",
+          "cycle": {
+            "work_count": 5,
+            "rest_count": 2,
+            "spans": [
+              {
+                "activity": "work",
+                "count": 3
+              },
+              {
+                "activity": "rest",
+                "count": 1
+              }
+            ]
+          }
+        }
+      ],
       "required": [
         "name",
         "description",
@@ -274,25 +295,45 @@
         "$ref": "#/definitions/schedule"
       },
       "examples": [
-        {
-          "name": "all-mon",
-          "enable_day": [
-            1,
-            7
-          ],
-          "classes": [
-            {
-              "subject": "数学",
-              "start_time": "08:00:00",
-              "end_time": "08:40:00"
-            },
-            {
-              "subject": "语文",
-              "start_time": "08:40:00",
-              "end_time": "09:20:00"
-            }
-          ]
-        }
+        [
+          {
+            "name": "周一课表",
+            "enable_day": [
+              1,
+              7
+            ],
+            "classes": [
+              {
+                "subject": "数学",
+                "start_time": "08:00:00",
+                "end_time": "08:40:00"
+              },
+              {
+                "subject": "语文",
+                "start_time": "08:40:00",
+                "end_time": "09:20:00"
+              }
+            ]
+          },
+          {
+            "name": "周二课表 - 单周",
+            "enable_day": [
+              2
+            ],
+            "classes": [
+              {
+                "subject": "数学",
+                "start_time": "08:00:00",
+                "end_time": "08:40:00"
+              },
+              {
+                "subject": "语文",
+                "start_time": "08:40:00",
+                "end_time": "09:20:00"
+              }
+            ]
+          }
+        ]
       ]
     }
   },
